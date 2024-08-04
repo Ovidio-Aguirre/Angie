@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Para Ti</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  background-color: #fff;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: manipulation; /* Mejora la respuesta táctil */
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 102, 102, 0.8);
+  transform: rotate(45deg);
+  animation: float 5s linear infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 102, 102, 0.8);
+  border-radius: 50%;
+}
+
+.heart:before {
+  left: -10px;
+}
+
+.heart:after {
+  top: -10px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-10px) translateX(10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(45deg);
+  }
+}
+
+.message-box {
+  position: relative;
+  background-color: #f06292; /* Rosa elegante */
+  color: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  font-size: 1.1rem;
+  max-width: 90%; /* Limita el ancho del cuadro */
+  margin: 20px auto; /* Margen superior e inferior */
+}
+
+.message-box:hover {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.message-box h1 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.message-box p {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.hidden-message {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .message-box {
+    padding: 20px 30px;
+    font-size: 1rem;
+  }
+
+  .message-box h1 {
+    font-size: 1.8rem;
+  }
+
+  .message-box p {
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="message-box">
+    <div class="initial-message">
+      <h1>Te quiero mucho!</h1>
+      <p>Eres lo mejor que me ha pasado.</p>
+    </div>
+    <div class="hidden-message">
+      <h1>Mi amor,</h1>
+      <p>Desde que te conoci, mi mundo se lleno de luz. Me encanta pasar tiempo contigo, cada momento a tu lado es un regalo. Me haces reir, me das paz y me llenas de felicidad. Eres una persona increible, con un corazon enorme y una sonrisa que me enamora cada dia. Te quiero mas de lo que las palabras pueden expresar, en realidad ya TE AMO.</p>
+    </div>
+  </div>
+
+  <script>
+    const messageBox = document.querySelector('.message-box');
+    const initialMessage = document.querySelector('.initial-message');
+    const hiddenMessage = document.querySelector('.hidden-message');
+
+    messageBox.addEventListener('click', () => {
+      initialMessage.style.display = 'none';
+      hiddenMessage.style.display = 'block';
+    });
+
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
